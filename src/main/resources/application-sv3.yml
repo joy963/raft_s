@@ -1,0 +1,5 @@
+seed:
+  hosts:
+    localhost:9090,localhost:9091,localhost:9092
+server:
+  port: 9092
