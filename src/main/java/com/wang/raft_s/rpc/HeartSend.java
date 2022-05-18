@@ -13,12 +13,13 @@ public class HeartSend {
 	@Autowired
 	private HostsCache hostsCache;
 
-	@GetMapping("/beat")
-	public Boolean sendBeat(HttpServletRequest request) {
-		String remoteHost = request.getRemoteHost();
-		if (!hostsCache.existHost(remoteHost)) {
-			hostsCache.addHost(remoteHost);
-			log.info("find host:{}", remoteHost);
+	@GetMapping("/beat/{port}")
+	public Boolean sendBeat(@PathVariable("port") int port, HttpServletRequest request) {
+		String ip = request.getRemoteHost();
+		String url = ip + ":" + port;
+		if (!hostsCache.existHost(url)) {
+			hostsCache.addHost(url);
+			log.info("find host:{}", url);
 		}
 		return true;
 	}

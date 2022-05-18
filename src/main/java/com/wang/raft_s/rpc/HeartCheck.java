@@ -15,6 +15,9 @@ public class HeartCheck {
 	@Autowired
 	private HostsCache hostsCache;
 
+	@Value("${server.port}")
+	private Integer port;
+
 	public boolean heartCheck(String host, int port) {
 		String url = String.format("%s%d%s", host, port, "/heart/beat");
 		return this.heartCheck(url);
@@ -22,12 +25,12 @@ public class HeartCheck {
 
 	public boolean heartCheck(String host) {
 		if (!host.contains("/")) {
-			host += "/heart/beat";
+			host += "/heart/beat/" + port;
 		}
-		Boolean heartExist = restTemplate.getForObject(host, Boolean.class);
-		if (heartExist == null || !heartExist) {
-			hostsCache.removeHost(host);
-			log.info("heart broken from:{}", host);
+		try {
+			restTemplate.getForObject("http://" + host, Boolean.class);
+		} catch (Exception e) {
+			log.info("heart broken from:{},{}", host, e.getMessage());
 			return false;
 		}
 		return true;
