@@ -18,11 +18,6 @@ public class HeartCheck {
 	@Value("${server.port}")
 	private Integer port;
 
-	public boolean heartCheck(String host, int port) {
-		String url = String.format("%s%d%s", host, port, "/heart/beat");
-		return this.heartCheck(url);
-	}
-
 	public boolean heartCheck(String host) {
 		if (!host.contains("/")) {
 			host += "/heart/beat/" + port;
