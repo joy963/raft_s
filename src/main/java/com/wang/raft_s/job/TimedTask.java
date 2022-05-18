@@ -20,7 +20,7 @@ public class TimedTask {
 
 	@PostConstruct
 	public void run() {
-		scheduledExecutorService.schedule(new HeartCheckWorker(), 5, TimeUnit.SECONDS);
+		scheduledExecutorService.scheduleWithFixedDelay(new HeartCheckWorker(), 5, 5, TimeUnit.SECONDS);
 	}
 
 	class HeartCheckWorker implements Runnable {
