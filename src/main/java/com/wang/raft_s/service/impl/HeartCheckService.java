@@ -1,6 +1,5 @@
-package com.wang.raft_s.rpc;
+package com.wang.raft_s.service.impl;
 
-import com.wang.raft_s.hosts.*;
 import lombok.extern.slf4j.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
@@ -8,7 +7,7 @@ import org.springframework.web.client.*;
 
 @Component
 @Slf4j
-public class HeartChecker {
+public class HeartCheckService {
 	@Autowired
 	private RestTemplate restTemplate;
 

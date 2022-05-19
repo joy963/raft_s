@@ -4,10 +4,9 @@ import com.wang.raft_s.service.*;
 import lombok.extern.slf4j.*;
 import org.springframework.stereotype.*;
 
-@Service
 @Slf4j
-public class DataServiceImpl implements DataService {
-
+@Service(value = "dataFollower")
+public class DataServiceFollowerImpl implements DataService {
 	@Override
 	public boolean addData(String key, String value) {
 		return false;
@@ -19,7 +18,7 @@ public class DataServiceImpl implements DataService {
 	}
 
 	@Override
-	public boolean updateData(String key, String dataOld, String dataNew) {
+	public boolean updateData(String key, String dataNew, Boolean upsert) {
 		return false;
 	}
 

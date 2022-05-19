@@ -5,7 +5,7 @@ public interface DataService {
 
 	boolean deleteData(String key);
 
-	boolean updateData(String key, String dataOld, String dataNew);
+	boolean updateData(String key, String dataNew, Boolean upsert);
 
 	String findData(String key);
 }
