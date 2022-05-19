@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/heart")
 @Slf4j
-public class HeartSend {
+public class HeartReceiver {
 	@Autowired
 	private HostsCache hostsCache;
 

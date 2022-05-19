@@ -8,12 +8,9 @@ import org.springframework.web.client.*;
 
 @Component
 @Slf4j
-public class HeartCheck {
+public class HeartChecker {
 	@Autowired
 	private RestTemplate restTemplate;
-
-	@Autowired
-	private HostsCache hostsCache;
 
 	@Value("${server.port}")
 	private Integer port;
