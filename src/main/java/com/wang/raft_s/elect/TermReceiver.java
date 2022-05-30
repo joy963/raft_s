@@ -13,5 +13,6 @@ public class TermReceiver {
 	@GetMapping("/renew")
 	public Boolean renewalTerm(@RequestParam("term") Long term, HttpServletRequest request) {
 		termManager.setTerm(term);
+		return true;
 	}
 }
